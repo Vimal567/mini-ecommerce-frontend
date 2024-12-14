@@ -1,0 +1,37 @@
+<div class="header-section">
+    <div class="logo">
+        <span #toggleButton (click)="openSidebar()"><i class="bi bi-list"></i></span>
+        <img src="/assets/logo/main-logo.png" alt="Logo">
+    </div>
+
+    <div class="search-bar-container">
+        <input type="text" class="form-control" placeholder="Search..">
+        <i class="bi bi-search"></i>
+    </div>
+
+    <div class="links-container">
+        <span>Orders</span>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item">Settings</a></li>
+                <li><a class="dropdown-item">Support</a></li>
+                <li><a class="dropdown-item">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="sidebar" #sidebar>
+    <div class="menu-container">
+        <div class="divider"></div>
+        <div class="menu-item">Orders</div>
+        <div class="menu-item">Settings</div>
+        <div class="menu-item">Support</div>
+        <div class="divider"></div>
+        <div class="menu-item">Logout <i class="bi bi-box-arrow-right"></i></div>
+    </div>
+</div>
