@@ -5,8 +5,13 @@
     </div>
 
     <div class="search-bar-container">
-        <input type="text" class="form-control" placeholder="Search..">
+        <input type="text" class="form-control" placeholder="Search.." (input)="onTyping($event)">
         <i class="bi bi-search"></i>
+        <div class="search-results-container" *ngIf="filteredProducts && filteredProducts.length">
+            <div class="product" *ngFor="let product of filteredProducts" (click)="onSelectProduct(product)">
+                <i class="bi bi-search"></i> <span>{{ product.name }}</span>
+            </div>
+        </div>
     </div>
 
     <div class="links-container">
@@ -26,6 +31,9 @@
 </div>
 
 <div id="sidebar" #sidebar>
+    <div class="greeting">
+        <span>Hello, Vimal</span>
+    </div>
     <div class="menu-container">
         <div class="divider"></div>
         <div class="menu-item">Orders</div>

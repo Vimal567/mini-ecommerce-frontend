@@ -27,12 +27,51 @@
         input {
             width: 100%;
             height: 100%;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         i {
             position: absolute;
-            top: 20%;
+            top: 18%;
             right: 3%;
+        }
+
+        .search-results-container {
+            position: absolute;
+            width: 100%;
+            max-height: 12vh;
+            overflow-y: auto;
+            background-color: white;
+            box-shadow: 0 8px 16px 1px rgba(0, 0, 0, .7);
+            padding-top: 2%;
+            z-index: 999;
+
+            i {
+                position: relative;
+            }
+
+            .product {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 1% 0% 1% 5%;
+                cursor: pointer;
+
+                span {
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    line-height: normal;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:hover {
+                    background-color: rgb(226, 225, 225);
+                }
+            }
         }
     }
 
@@ -42,6 +81,7 @@
         flex-direction: row;
         align-items: center;
         padding-right: 2%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
         span {
             margin-right: 10%;
@@ -90,6 +130,10 @@
         .search-bar-container {
             width: 70%;
             margin-left: 20%;
+
+            .search-results-container .product {
+                font-size: 0.8rem;
+            }
         }
 
         .links-container {
@@ -103,12 +147,25 @@
         position: fixed;
         width: 40%;
         height: 100%;
+        border-right: 2px inset rgb(199, 199, 199);
         z-index: 1;
+
+        .greeting {
+            font-size: large;
+            font-weight: bold;
+            font-family: comic Sans MS;
+            color: rgb(86, 86, 226);
+            text-wrap: wrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            padding: 5%;
+        }
 
         .menu-container {
             display: flex;
             flex-direction: column;
-            margin-top: 10vh;
 
             .divider {
                 border-bottom: 5px solid #d5dbdb;
