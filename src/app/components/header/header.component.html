@@ -15,31 +15,53 @@
     </div>
 
     <div class="links-container">
-        <span>Orders</span>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Profile
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item">Settings</a></li>
-                <li><a class="dropdown-item">Support</a></li>
-                <li><a class="dropdown-item">Logout</a></li>
-            </ul>
-        </div>
+        <ng-container *ngIf="showOptions">
+            <span>Orders</span>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item">Settings</a></li>
+                    <li><a class="dropdown-item">Support</a></li>
+                    <li><a class="dropdown-item">Logout</a></li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="showLoginButton">
+            <button class="btn btn-warning login" type="button" (click)="navigateTo('LOGIN')">Login</button>
+        </ng-container>
+        <ng-container *ngIf="showRegisterButton">
+            <button class="btn btn-secondary register" type="button" (click)="navigateTo('REGISTER')">Register</button>
+        </ng-container>
     </div>
 </div>
 
 <div id="sidebar" #sidebar>
     <div class="greeting">
-        <span>Hello, Vimal</span>
+        <span>Hello, User</span>
     </div>
     <div class="menu-container">
         <div class="divider"></div>
-        <div class="menu-item">Orders</div>
-        <div class="menu-item">Settings</div>
-        <div class="menu-item">Support</div>
-        <div class="divider"></div>
-        <div class="menu-item">Logout <i class="bi bi-box-arrow-right"></i></div>
+        <ng-container *ngIf="showOptions">
+            <div class="menu-item">Orders</div>
+            <div class="menu-item">Settings</div>
+            <div class="menu-item">Support</div>
+            <div class="divider"></div>
+            <div class="menu-item">
+                Logout <i class="bi bi-box-arrow-right"></i>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="showLoginButton">
+            <div class="menu-item" (click)="navigateTo('LOGIN')">Login</div>
+        </ng-container>
+        <ng-container *ngIf="showRegisterButton">
+            <div class="menu-item" (click)="navigateTo('REGISTER')">Register</div>
+        </ng-container>
+        <ng-container *ngIf="!showOptions">
+            <div class="divider"></div>
+            <div class="menu-item">Support</div>
+        </ng-container>
     </div>
 </div>

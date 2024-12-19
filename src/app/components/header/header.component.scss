@@ -97,6 +97,25 @@
             }
         }
 
+        .login {
+            background-color: rgb(255, 230, 0);
+            border: none;
+
+            &:hover {
+                background-color: rgb(207, 207, 0);
+            }
+        }
+
+        .register {
+            background-color: gray;
+            border: none;
+            margin-left: 10%;
+
+            &:hover {
+                background-color: rgb(90, 89, 89);
+            }
+        }
+
     }
 }
 

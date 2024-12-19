@@ -2,6 +2,8 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { AppService } from '../../app.service';
 import { Product } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
     selector: 'app-header',
@@ -12,19 +14,44 @@ export class HeaderComponent implements OnInit {
 
     productsList: Product[] = [];
     filteredProducts: Product[] = [];
-    timer: any
+    timer: any  //debounce
+
+    showOptions: boolean = false;
+    showLoginButton: boolean = false;
+    showRegisterButton: boolean = false;
 
     @ViewChild('sidebar', { static: true }) sidebar: ElementRef;
     @ViewChild('toggleButton', { static: true }) toggleButton: ElementRef;
 
     constructor(
         private appService: AppService,
-        private loaderService: NgxUiLoaderService
+        private loaderService: NgxUiLoaderService,
+        private router: Router
     ) {
 
     }
 
     ngOnInit(): void {
+        this.router.events.pipe().subscribe(() => {
+            const currentUrl = this.router.url;
+            if (currentUrl.includes('register')) {
+                this.showLoginButton = true;
+                this.showRegisterButton = false;
+                this.showOptions = false;
+            } else if (currentUrl.includes('login')) {
+                this.showRegisterButton = true;
+                this.showLoginButton = false;
+                this.showOptions = false;
+            } else if (currentUrl.includes('home')) {
+                this.showRegisterButton = true;
+                this.showLoginButton = true;
+                this.showOptions = false;
+            } else {
+                this.showRegisterButton = false;
+                this.showLoginButton = false;
+                this.showOptions = true;
+            }
+        });
         this.getProducts();
     }
 
@@ -34,7 +61,6 @@ export class HeaderComponent implements OnInit {
             next: (res: any) => {
                 if (res) {
                     this.productsList = this.appService.parseProductsList(res.products);
-                    console.log(this.productsList);
                 }
             },
             error: (error) => {
@@ -84,6 +110,11 @@ export class HeaderComponent implements OnInit {
             clearTimeout(this.timer);
         }
 
+        if (!value) {
+            this.filteredProducts = [];
+            return;
+        }
+
         this.timer = setTimeout(() => {
             this.searchProducts(value);
         }, 5);
@@ -95,5 +126,16 @@ export class HeaderComponent implements OnInit {
 
     onSelectProduct(product: Product) {
         console.log(product)
+    }
+
+    navigateTo(page: string) {
+        switch(page) {
+            case 'LOGIN':
+                this.router.navigate(['login']);
+                break;
+            case 'REGISTER':
+                this.router.navigate(['register']);
+                break;
+        }
     }
 }
