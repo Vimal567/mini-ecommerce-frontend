@@ -132,9 +132,11 @@ export class HeaderComponent implements OnInit {
         switch(page) {
             case 'LOGIN':
                 this.router.navigate(['login']);
+                this.closeSidebar();
                 break;
             case 'REGISTER':
                 this.router.navigate(['register']);
+                this.closeSidebar();
                 break;
         }
     }
