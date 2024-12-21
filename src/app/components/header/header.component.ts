@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../app.service';
-import { Product } from '../../app.model';
+import { Product, User } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -12,6 +12,7 @@ import { filter } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
+    user: User = {};
     productsList: Product[] = [];
     filteredProducts: Product[] = [];
     timer: any  //debounce
@@ -51,6 +52,7 @@ export class HeaderComponent implements OnInit {
                 this.showLoginButton = false;
                 this.showOptions = true;
             }
+            this.getUserData();
         });
         this.getProducts();
     }
@@ -70,6 +72,16 @@ export class HeaderComponent implements OnInit {
                 this.loaderService.stop();
             }
         });
+    }
+
+    getUserData() {
+        const user = this.appService.getUserData('user') || '{}';
+        this.user = JSON.parse(user);
+        if (this.user && this.user.id) {
+            this.showRegisterButton = false;
+            this.showLoginButton = false;
+            this.showOptions = true;
+        }
     }
 
     // This method is called when a click happens outside the sidebar
@@ -130,6 +142,10 @@ export class HeaderComponent implements OnInit {
 
     navigateTo(page: string) {
         switch(page) {
+            case 'HOME':
+                this.router.navigate(['home']);
+                this.closeSidebar();
+                break;
             case 'LOGIN':
                 this.router.navigate(['login']);
                 this.closeSidebar();
@@ -139,5 +155,10 @@ export class HeaderComponent implements OnInit {
                 this.closeSidebar();
                 break;
         }
+    }
+
+    logout() {
+        this.appService.logout();
+        this.getUserData();
     }
 }

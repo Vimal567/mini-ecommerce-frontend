@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="auth-section container-wrapper">
+    <div class="auth-form-container">
+        <div class="brand-logo">
+            <img src="/assets/logo/main-logo.png" alt="Logo">
+        </div>
+        <form #registerform="ngForm" (ngSubmit)="login(registerform)">
+            <div class="form-group">
+                <label for="email">Email address*</label>
+                <input type="email" class="form-control" [(ngModel)]="user.email" name="email" id="email"
+                    aria-describedby="emailHelp" placeholder="Enter email" appFormValidator required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password*</label>
+                <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password"
+                    placeholder="Enter Password" minlength="8" appFormValidator required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" [disabled]="!registerform.valid">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>

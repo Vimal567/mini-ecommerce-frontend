@@ -1,7 +1,7 @@
 <div class="header-section">
     <div class="logo">
         <span #toggleButton (click)="openSidebar()"><i class="bi bi-list"></i></span>
-        <img src="/assets/logo/main-logo.png" alt="Logo">
+        <img src="/assets/logo/main-logo.png" alt="Logo" (click)="navigateTo('HOME')">
     </div>
 
     <div class="search-bar-container">
@@ -25,7 +25,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item">Settings</a></li>
                     <li><a class="dropdown-item">Support</a></li>
-                    <li><a class="dropdown-item">Logout</a></li>
+                    <li (click)="logout()"><a class="dropdown-item">Logout</a></li>
                 </ul>
             </div>
         </ng-container>
@@ -40,7 +40,7 @@
 
 <div id="sidebar" #sidebar>
     <div class="greeting">
-        <span>Hello, User</span>
+        <span>Hello, {{ user.name ? user.name : 'User'}}</span>
     </div>
     <div class="menu-container">
         <div class="divider"></div>
@@ -49,7 +49,7 @@
             <div class="menu-item">Settings</div>
             <div class="menu-item">Support</div>
             <div class="divider"></div>
-            <div class="menu-item">
+            <div class="menu-item" (click)="logout()">
                 Logout <i class="bi bi-box-arrow-right"></i>
             </div>
         </ng-container>

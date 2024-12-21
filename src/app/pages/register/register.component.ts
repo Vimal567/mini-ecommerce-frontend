@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.checkUserLogin();
     }
 
     matchPassword() {
@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
                 if (res && res.sucess) {
                     form.resetForm();
                     this.toastrService.success('User registered Successfully!');
+                    this.appService.setUserData(res.data);
                     this.router.navigate(['home']);
                 } else {
                     this.user.password = '';
@@ -60,5 +61,13 @@ export class RegisterComponent implements OnInit {
                 this.loaderService.stop();
             }
         });
+    }
+
+    checkUserLogin() {
+        const user = this.appService.getUserData('user') || '{}';
+        this.user = JSON.parse(user);
+        if (this.user && this.user.id) {
+            this.router.navigate(['home']);
+        }
     }
 }

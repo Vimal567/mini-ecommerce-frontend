@@ -13,6 +13,10 @@ export class AppService {
 
     constructor(private http: HttpClient) { }
 
+    login(postObj): Observable<any> {
+        return this.http.post(this.apiUrl + '/login', postObj);
+    }
+
     saveUser(postObj): Observable<any> {
         let formData = new FormData();
 
@@ -44,6 +48,22 @@ export class AppService {
                 stock: product.stock
             };
         });
+    }
+
+    setUserData(data: any) {
+        window.localStorage.setItem('user', JSON.stringify({
+            id: data.id,
+            name: data.name,
+            email: data.email
+        }));
+    }
+
+    getUserData(key) {
+        return window.localStorage.getItem(key);
+    }
+
+    logout() {
+        return window.localStorage.clear();
     }
 
 }
