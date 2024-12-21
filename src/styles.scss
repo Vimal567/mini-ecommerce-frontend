@@ -19,7 +19,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    
+
         .auth-form-container {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             width: 45%;
@@ -28,20 +28,20 @@
             box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
             border-radius: 3%;
             padding: 5%;
-    
+
             .brand-logo {
                 height: 10vh;
                 width: 80%;
                 margin: auto;
                 border-radius: 10px;
                 box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
-    
+
                 img {
                     width: 80%;
                     height: inherit;
                 }
             }
-    
+
             input {
                 background: #ecf0f3;
                 padding: 10px;
@@ -51,7 +51,7 @@
                 border-radius: 50px;
                 box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
             }
-    
+
             button {
                 width: 100%;
                 color: white;
@@ -63,18 +63,23 @@
                 font-weight: 900;
                 box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
                 transition: 0.5s;
-    
+
                 &:hover {
                     background: #4fbafc;
                 }
             }
         }
     }
-    
-    
+
     @media screen and (max-width: 576px) {
         .auth-section .auth-form-container {
             width: 75%;
         }
     }
+}
+
+.error-messages {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px;
 }

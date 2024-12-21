@@ -14,6 +14,12 @@ export class AppService {
     constructor(private http: HttpClient) { }
 
     saveUser(postObj): Observable<any> {
+        let formData = new FormData();
+
+        if (postObj.name) formData.append('name', postObj.name);
+        if (postObj.email) formData.append('email', postObj.email);
+        if (postObj.password) formData.append('password', postObj.password);
+        
         return this.http.post(this.apiUrl + '/register', postObj);
     }
 

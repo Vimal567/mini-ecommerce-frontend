@@ -10,12 +10,15 @@ import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { CustomValidationDirective } from './directives/custom-validation.directive';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
         AppComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        CustomValidationDirective
     ],
     imports: [
         BrowserModule,
@@ -24,6 +27,13 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
         FormsModule,
         ComponentsModule,
         HttpClientModule,
+        ToastrModule.forRoot(
+            {
+                timeOut: 10000,
+                positionClass: 'toast-top-center',
+                preventDuplicates: true,
+            }
+        ),
         NgxUiLoaderModule.forRoot({
             bgsColor: 'red',      // Background color of the loader
             bgsOpacity: 0.8,      // Opacity of the background

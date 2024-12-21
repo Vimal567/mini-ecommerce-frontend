@@ -1,0 +1,17 @@
+.confirm-password {
+    position: relative;
+
+    span {
+        position: absolute;
+        top: 20%;
+        right: -5%;
+    }
+
+    #match {
+        color: green;
+    }
+
+    #dismatch {
+        color: red;
+    }
+}

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppService } from '../../app.service';
 import { User } from '../../app.model';
+import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-register',
@@ -12,10 +14,13 @@ import { User } from '../../app.model';
 export class RegisterComponent implements OnInit {
 
     user: User = {};
+    passwordMatching: boolean = false;
+    showPasswordMatchingIndication: boolean = false;
 
     constructor(
         private appService: AppService,
         private loaderService: NgxUiLoaderService,
+        private toastrService: ToastrService,
         private router: Router
     ) {
 
@@ -25,15 +30,27 @@ export class RegisterComponent implements OnInit {
 
     }
 
-    saveUser() {
-        this.loaderService.start();
-        const payload = {
+    matchPassword() {
+        this.showPasswordMatchingIndication = true;
+        if (this.user.password === this.user.confirmPassword) {
+            this.passwordMatching = true;
+        } else {
+            this.passwordMatching = false;
+        }
+    }
 
-        };
-        this.appService.saveUser(payload).subscribe({
+    saveUser(form: NgForm) {
+        this.loaderService.start();
+        this.appService.saveUser(this.user).subscribe({
             next: (res: any) => {
-                if (res) {
-                    console.log(res)
+                if (res && res.sucess) {
+                    form.resetForm();
+                    this.toastrService.success('User registered Successfully!');
+                    this.router.navigate(['home']);
+                } else {
+                    this.user.password = '';
+                    this.user.confirmPassword = '';
+                    this.toastrService.warning(res.message);
                 }
             },
             error: (error) => {

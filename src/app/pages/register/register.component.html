@@ -3,29 +3,37 @@
         <div class="brand-logo">
             <img src="/assets/logo/main-logo.png" alt="Logo">
         </div>
-        <form #registerform="ngForm">
+        <form #registerform="ngForm" (ngSubmit)="saveUser(registerform)">
             <div class="form-group">
                 <label for="name">Name*</label>
-                <input class="form-control" [(ngModel)]="user.name" name="name" id="name" type="text" placeholder="Enter name" required>
+                <input class="form-control" [(ngModel)]="user.name" name="name" id="name" type="text"
+                    placeholder="Enter name" appFormValidator required>
             </div>
             <div class="form-group">
                 <label for="email">Email address*</label>
-                <input type="email" class="form-control" [(ngModel)]="user.email" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="email" class="form-control" [(ngModel)]="user.email" name="email" id="email"
+                    aria-describedby="emailHelp" placeholder="Enter email" appFormValidator required>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
             </div>
             <div class="form-group">
                 <label for="password">New Password*</label>
-                <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password" placeholder="Enter Password" required minlength="8">
-                <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters long.</small>
+                <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password"
+                    placeholder="Enter Password" minlength="8" (input)="matchPassword()" appFormValidator required>
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password*</label>
-                <input type="password" class="form-control" [(ngModel)]="user.confirmPassword" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                <div class="confirm-password">
+                    <input type="password" class="form-control" [(ngModel)]="user.confirmPassword" name="confirmPassword"
+                    id="confirmPassword" placeholder="Confirm Password" (input)="matchPassword()" minlength="8" appFormValidator required>
+                    <span id="match" *ngIf="passwordMatching && showPasswordMatchingIndication"><i class="bi bi-check"></i></span>
+                    <span id="dismatch" *ngIf="!passwordMatching && showPasswordMatchingIndication"><i class="bi bi-x"></i></span>
+                </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" [disabled]="!registerform.valid">Submit</button>
             </div>
         </form>
-        
+
     </div>
 </div>
