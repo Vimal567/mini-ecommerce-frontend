@@ -13,8 +13,12 @@ export class AppService {
 
     constructor(private http: HttpClient) { }
 
+    saveUser(postObj): Observable<any> {
+        return this.http.post(this.apiUrl + '/register', postObj);
+    }
+
     getProducts(): Observable<any> {
-        return this.http.get(`${this.apiUrl}/products`);
+        return this.http.get(this.apiUrl + '/products');
     }
 
     parseProductsList(products: any) {

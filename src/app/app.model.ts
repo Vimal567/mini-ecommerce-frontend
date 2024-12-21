@@ -1,3 +1,11 @@
+export class User {
+    id?: string;
+    name?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+}
+
 export class Image {
     id?: string;
     image?: string;

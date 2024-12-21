@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
         this.appService.getProducts().subscribe({
             next: (res: any) => {
                 if (res) {
-                    this.productsList = this.appService.parseProductsList(res.products);
+                    this.productsList = this.appService.parseProductsList(res.data);
                 }
             },
             error: (error) => {
