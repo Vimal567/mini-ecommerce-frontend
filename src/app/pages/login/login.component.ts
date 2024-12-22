@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.loaderService.start();
         this.appService.login(this.user).subscribe({
             next: (res: any) => {
-                if (res && res.sucess) {
+                if (res && res.success) {
                     form.resetForm();
                     this.toastrService.success('Logged in Successfully!');
                     this.appService.setUserData(res.data);
@@ -51,8 +51,7 @@ export class LoginComponent implements OnInit {
     }
 
     checkUserLogin() {
-        const user = this.appService.getUserData('user') || '{}';
-        this.user = JSON.parse(user);
+        this.user = this.appService.getUserData('user') || {};
         if (this.user && this.user.id) {
             this.router.navigate(['home']);
         }

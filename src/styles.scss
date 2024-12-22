@@ -52,6 +52,24 @@
                 box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
             }
 
+            .confirm-password {
+                position: relative;
+            
+                span {
+                    position: absolute;
+                    top: 20%;
+                    right: -5%;
+                }
+            
+                #match {
+                    color: green;
+                }
+            
+                #dismatch {
+                    color: red;
+                }
+            }
+
             button {
                 width: 100%;
                 color: white;
@@ -72,8 +90,8 @@
     }
 
     @media screen and (max-width: 576px) {
-        .auth-section .auth-form-container {
-            width: 75%;
+        &.auth-section .auth-form-container {
+            width: 80%;
         }
     }
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from './app.model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,13 +17,11 @@ export class AppService {
     }
 
     saveUser(postObj): Observable<any> {
-        let formData = new FormData();
-
-        if (postObj.name) formData.append('name', postObj.name);
-        if (postObj.email) formData.append('email', postObj.email);
-        if (postObj.password) formData.append('password', postObj.password);
-        
         return this.http.post(this.apiUrl + '/register', postObj);
+    }
+
+    updatePassword(postObj): Observable<any> {
+        return this.http.patch(this.apiUrl + '/updateUser', postObj);
     }
 
     getProducts(): Observable<any> {
@@ -59,7 +56,8 @@ export class AppService {
     }
 
     getUserData(key) {
-        return window.localStorage.getItem(key);
+        const data = window.localStorage.getItem(key);
+        return JSON.parse(data);
     }
 
     logout() {

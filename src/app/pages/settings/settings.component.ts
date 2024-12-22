@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { User } from '../../app.model';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppService } from '../../app.service';
-import { User } from '../../app.model';
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrl: './register.component.scss'
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrl: './settings.component.scss'
 })
-export class RegisterComponent implements OnInit {
+export class SettingsComponent {
 
     user: User = {};
     passwordMatching: boolean = false;
@@ -26,10 +26,6 @@ export class RegisterComponent implements OnInit {
 
     }
 
-    ngOnInit(): void {
-        this.checkUserLogin();
-    }
-
     matchPassword() {
         this.showPasswordMatchingIndication = true;
         if (this.user.password === this.user.confirmPassword) {
@@ -39,23 +35,27 @@ export class RegisterComponent implements OnInit {
         }
     }
 
-    saveUser(form: NgForm) {
+    updatePassword(form: NgForm) {
         this.loaderService.start();
-        const payload = {
-            name: this.user.name,
-            email: this.user.email,
-            password: this.user.password
+        let payload = {};
+        if (this.user.name) {
+            payload['name'] = this.user.name;
         }
-        this.appService.saveUser(payload).subscribe({
+        if (this.user.password) {
+            payload['old_password'] = this.user.oldPassword;
+            payload['password'] = this.user.password;
+        }
+        if (!Object.keys(payload).length) return;
+        const user = this.appService.getUserData('user');
+        this.user.id = user.id;
+        this.appService.updatePassword(this.user).subscribe({
             next: (res: any) => {
                 if (res && res.success) {
                     form.resetForm();
-                    this.toastrService.success('User registered Successfully!');
-                    this.appService.setUserData(res.data);
+                    this.toastrService.success('Updated Successfully!');
                     this.router.navigate(['home']);
                 } else {
-                    this.user.password = '';
-                    this.user.confirmPassword = '';
+                    form.resetForm();
                     this.showPasswordMatchingIndication = false;
                     this.passwordMatching = false;
                     this.toastrService.warning(res.message);
@@ -68,12 +68,5 @@ export class RegisterComponent implements OnInit {
                 this.loaderService.stop();
             }
         });
-    }
-
-    checkUserLogin() {
-        this.user = this.appService.getUserData('user') || {};
-        if (this.user && this.user.id) {
-            this.router.navigate(['home']);
-        }
     }
 }

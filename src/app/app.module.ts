@@ -12,13 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { CustomValidationDirective } from './directives/custom-validation.directive';
 import { ToastrModule } from 'ngx-toastr';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         RegisterComponent,
         LoginComponent,
-        CustomValidationDirective
+        CustomValidationDirective,
+        SettingsComponent
     ],
     imports: [
         BrowserModule,

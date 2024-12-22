@@ -1,0 +1,39 @@
+<div class="auth-section container-wrapper">
+    <div class="heading">Settings</div>
+    <div class="auth-form-container">
+        <form #settingsForm="ngForm" (ngSubmit)="updatePassword(settingsForm)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" [(ngModel)]="user.name" name="name" id="name" type="text"
+                    placeholder="Enter name" appFormValidator>
+            </div>
+            <div class="form-group">
+                <label for="oldPassword">Old Password</label>
+                <input type="password" class="form-control" [(ngModel)]="user.oldPassword" name="oldPassword" id="oldPassword"
+                    placeholder="Enter Password" minlength="8" appFormValidator>
+            </div>
+            <div class="form-group" *ngIf="user.password && user.password.length">
+                <label for="password">Password*</label>
+                <input type="password" class="form-control" [(ngModel)]="user.password" name="password" id="password"
+                    placeholder="Enter Password" minlength="8" appFormValidator required="">
+            </div>
+            <div class="form-group" *ngIf="user.password && user.password.length">
+                <label for="confirmPassword">Confirm Password*</label>
+                <div class="confirm-password">
+                    <input type="password" class="form-control" [(ngModel)]="user.confirmPassword"
+                        name="confirmPassword" id="confirmPassword" placeholder="Confirm Password"
+                        (input)="matchPassword()" minlength="8" appFormValidator required="">
+                    <span id="match" *ngIf="passwordMatching && showPasswordMatchingIndication">
+                        <i class="bi bi-check"></i>
+                    </span>
+                    <span id="dismatch" *ngIf="!passwordMatching && showPasswordMatchingIndication">
+                        <i class="bi bi-x"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" [disabled]="!settingsForm.valid">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -54,7 +54,9 @@ export class HeaderComponent implements OnInit {
             }
             this.getUserData();
         });
-        this.getProducts();
+        if (this.productsList.length === 0) {
+            this.getProducts();
+        }
     }
 
     getProducts() {
@@ -75,8 +77,7 @@ export class HeaderComponent implements OnInit {
     }
 
     getUserData() {
-        const user = this.appService.getUserData('user') || '{}';
-        this.user = JSON.parse(user);
+        this.user = this.appService.getUserData('user') || {};
         if (this.user && this.user.id) {
             this.showRegisterButton = false;
             this.showLoginButton = false;
@@ -154,11 +155,15 @@ export class HeaderComponent implements OnInit {
                 this.router.navigate(['register']);
                 this.closeSidebar();
                 break;
+            case 'SETTINGS':
+                this.router.navigate(['settings']);
+                this.closeSidebar();
+                break;
         }
     }
 
     logout() {
         this.appService.logout();
-        this.getUserData();
+        this.navigateTo('LOGIN');
     }
 }
