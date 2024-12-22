@@ -1,0 +1,5 @@
+<div class="star-rating">
+    <span *ngFor="let star of stars; let i = index" [class.filled]="i < rating" class="star">
+        &#9733; <!-- Unicode for filled star (★) -->
+    </span>
+</div>

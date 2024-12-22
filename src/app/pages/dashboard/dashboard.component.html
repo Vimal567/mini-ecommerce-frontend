@@ -1,0 +1,16 @@
+<div class="dashboard-section container-wrapper">
+    <div class="heading">Dashboard</div>
+    <div class="dashboard-container">
+        <div class="product-grid">
+            <div class="product" *ngFor="let item of productsList">
+                <img [src]="item.images[0].image" alt="">
+                <div class="name">{{ item.name }}</div>
+                <div class="ratings">
+                    <app-rating [rating]="item.ratings"></app-rating>
+                </div>
+                <div class="price">₹ {{ item.price | number:'1.0-0' }}</div>
+            </div>
+        </div>
+
+    </div>
+</div>

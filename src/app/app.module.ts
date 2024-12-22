@@ -13,6 +13,8 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { CustomValidationDirective } from './directives/custom-validation.directive';
 import { ToastrModule } from 'ngx-toastr';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NumberWithCommasPipe } from './pipes/number-with-commas.pipe';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import { SettingsComponent } from './pages/settings/settings.component';
         RegisterComponent,
         LoginComponent,
         CustomValidationDirective,
-        SettingsComponent
+        SettingsComponent,
+        DashboardComponent,
+        NumberWithCommasPipe
     ],
     imports: [
         BrowserModule,

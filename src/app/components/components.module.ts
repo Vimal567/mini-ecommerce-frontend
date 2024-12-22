@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { RatingComponent } from './rating/rating.component';
 
 
 @NgModule({
     declarations: [
-        HeaderComponent
+        HeaderComponent,
+        RatingComponent
     ],
     imports: [
         CommonModule,
         NgxUiLoaderModule
     ],
     exports: [
-        HeaderComponent
+        HeaderComponent,
+        RatingComponent
     ]
 })
 export class ComponentsModule { }

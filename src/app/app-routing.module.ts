@@ -4,11 +4,12 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
     {
         path: 'home',
-        component: AppComponent
+        component: DashboardComponent
     },
     {
         path: 'register',
