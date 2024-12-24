@@ -2,69 +2,99 @@
     padding-left: 1%;
     padding-right: 1%;
 
-    .heading {
-        text-align: start;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: xx-large;
-        color: rgb(38, 88, 100);
+    .header-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 1rem;
-    }
 
-    .dashboard-container {
-
-        .product-grid {
-            display: grid;
-            column-gap: 2rem;
-            row-gap: 6vh;
-            grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-            grid-template-rows: auto;
-            justify-items: center;
+        .heading {
+            text-align: start;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: xx-large;
+            color: rgb(38, 88, 100);
         }
 
-        .product {
-            position: relative;
-            width: 14rem;
-            height: 35vh;
-            border: 2px solid rgb(231, 231, 231);
-            border-radius: 20px;
-            overflow: hidden;
+        .cart-value {
+            padding: 1% 2%;
+            border-radius: 5px;
+            background-color: rgb(66, 173, 192);
             cursor: pointer;
 
-            img {
-                position: absolute;
-                top: 2%;
-                right: 10%;
-                width: 10rem;
-                height: 60%;
-                overflow: hidden;
+            &:hover {
+                background-color: rgb(49, 117, 131);
             }
+        }
+    }
 
-            .name {
-                position: absolute;
-                top: 62%;
-                padding: 0% 5%;
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                max-width: 100%;
-                display: -webkit-box;
-                -webkit-line-clamp: 2; /* Limit the text to 2 lines */
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: normal
-            }
+    .product-grid {
+        display: grid;
+        column-gap: 2rem;
+        row-gap: 6vh;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+        grid-template-rows: auto;
+        justify-items: center;
+    }
 
-            .ratings {
-                position: absolute;
-                top: 75%;
-                padding: 0% 5%;
-            }
+    .product {
+        position: relative;
+        width: 14rem;
+        height: 35vh;
+        border: 2px solid rgb(231, 231, 231);
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
 
-            .price {
-                position: absolute;
-                top: 90%;
-                padding: 0% 5%;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                color: green;
+        img {
+            position: absolute;
+            top: 2%;
+            right: 10%;
+            width: 10rem;
+            height: 60%;
+            overflow: hidden;
+        }
+
+        .name {
+            position: absolute;
+            top: 62%;
+            padding: 0% 5%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* Limit the text to 2 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal
+        }
+
+        .ratings {
+            position: absolute;
+            top: 75%;
+            padding: 0% 5%;
+        }
+
+        .price {
+            position: absolute;
+            top: 90%;
+            padding: 0% 5%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: green;
+        }
+
+        .cart-button {
+            position: absolute;
+            top: 89%;
+            right: 10%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #ffd814;
+            padding: 1% 2%;
+            border-radius: 7px;
+
+            &:hover {
+                background-color: #dab80e;
             }
         }
     }

@@ -1,16 +1,17 @@
 <div class="dashboard-section container-wrapper">
-    <div class="heading">Dashboard</div>
-    <div class="dashboard-container">
-        <div class="product-grid">
-            <div class="product" *ngFor="let item of productsList">
-                <img [src]="item.images[0].image" alt="">
-                <div class="name">{{ item.name }}</div>
-                <div class="ratings">
-                    <app-rating [rating]="item.ratings"></app-rating>
-                </div>
-                <div class="price">₹ {{ item.price | number:'1.0-0' }}</div>
+    <div class="header-section">
+        <div class="heading">Dashboard</div>
+        <div class="cart-value" *ngIf="isLoggedIn"><i class="bi bi-cart4"></i> 0</div>
+    </div>
+    <div class="product-grid">
+        <div class="product" *ngFor="let item of productsList">
+            <img [src]="item.images[0].image" alt="">
+            <div class="name">{{ item.name }}</div>
+            <div class="ratings">
+                <app-rating [rating]="item.ratings"></app-rating>
             </div>
+            <div class="price">₹ {{ item.price | number:'1.0-0' }}</div>
+            <div class="cart-button" *ngIf="isLoggedIn"><i class="bi bi-cart-plus"></i></div>
         </div>
-
     </div>
 </div>

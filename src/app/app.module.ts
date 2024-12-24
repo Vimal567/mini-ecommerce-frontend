@@ -14,7 +14,7 @@ import { CustomValidationDirective } from './directives/custom-validation.direct
 import { ToastrModule } from 'ngx-toastr';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NumberWithCommasPipe } from './pipes/number-with-commas.pipe';
+import { DetailComponent } from './pages/detail/detail.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +24,7 @@ import { NumberWithCommasPipe } from './pipes/number-with-commas.pipe';
         CustomValidationDirective,
         SettingsComponent,
         DashboardComponent,
-        NumberWithCommasPipe
+        DetailComponent
     ],
     imports: [
         BrowserModule,

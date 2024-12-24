@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.checkUserLogin();
+        this.verifyUserLogin();
     }
 
     matchPassword() {
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    checkUserLogin() {
+    verifyUserLogin() {
         this.user = this.appService.getUserData('user') || {};
         if (this.user && this.user.id) {
             this.router.navigate(['home']);

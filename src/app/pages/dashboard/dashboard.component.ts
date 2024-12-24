@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../app.model';
+import { Product, User } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppService } from '../../app.service';
 
@@ -10,7 +10,9 @@ import { AppService } from '../../app.service';
 })
 export class DashboardComponent implements OnInit{
 
+    user: User = {};
     productsList: Product[] = [];
+    isLoggedIn: boolean = false;
 
     constructor(
         private appService: AppService,
@@ -20,6 +22,14 @@ export class DashboardComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        this.verifyUserLogin();
+    }
+
+    verifyUserLogin() {
+        this.user = this.appService.getUserData('user') || {};
+        if (this.user && this.user.id) {
+            this.isLoggedIn = true;
+        }
         this.getProducts();
     }
 

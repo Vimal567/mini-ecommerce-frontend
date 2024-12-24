@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.checkUserLogin()
+        this.verifyUserLogin()
     }
 
     login(form: NgForm) {
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    checkUserLogin() {
+    verifyUserLogin() {
         this.user = this.appService.getUserData('user') || {};
         if (this.user && this.user.id) {
             this.router.navigate(['home']);
