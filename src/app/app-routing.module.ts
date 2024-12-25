@@ -6,6 +6,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { SupportComponent } from './pages/support/support.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,10 @@ const routes: Routes = [
     {
         path: 'detail/:id',
         component: DetailComponent
+    },
+    {
+        path: 'cart',
+        component: CartComponent
     },
     {
         path: 'settings',

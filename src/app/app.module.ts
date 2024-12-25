@@ -16,6 +16,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { SupportComponent } from './pages/support/support.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { SupportComponent } from './pages/support/support.component';
         SettingsComponent,
         DashboardComponent,
         DetailComponent,
-        SupportComponent
+        SupportComponent,
+        CartComponent
     ],
     imports: [
         BrowserModule,

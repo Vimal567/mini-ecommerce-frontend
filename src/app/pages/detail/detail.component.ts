@@ -66,12 +66,10 @@ export class DetailComponent implements OnInit {
         this.loaderService.start();
         const payload = {
             account_id: this.user.id,
-            cart_items: [
-                {
-                    product: product,
-                    qty: 1
-                }
-            ]
+            cart_item: {
+                product: product,
+                qty: 1
+            }
         };
         this.appService.addToCart(payload).subscribe({
             next: (res: any) => {

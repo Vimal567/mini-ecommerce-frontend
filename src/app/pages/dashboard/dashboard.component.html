@@ -1,7 +1,7 @@
 <div class="dashboard-section container-wrapper">
     <div class="header-section">
         <div class="heading">Dashboard</div>
-        <div class="cart-value" *ngIf="isLoggedIn">
+        <div class="cart-value" *ngIf="isLoggedIn" routerLink="/cart">
             <i class="bi bi-cart4"></i>
             {{ cart && cart[0] && cart[0].cartItems ? cart[0].cartItems.length : 0 }}
         </div>

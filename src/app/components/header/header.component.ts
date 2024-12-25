@@ -35,28 +35,24 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this.router.events.pipe().subscribe(() => {
-            const currentUrl = this.router.url;
-            if (currentUrl.includes('register')) {
-                this.showLoginButton = true;
-                this.showRegisterButton = false;
-                this.showOptions = false;
-            } else if (currentUrl.includes('login')) {
-                this.showRegisterButton = true;
-                this.showLoginButton = false;
-                this.showOptions = false;
-            } else if (currentUrl.includes('home')) {
-                this.showRegisterButton = true;
-                this.showLoginButton = true;
-                this.showOptions = false;
-            } else {
-                this.showRegisterButton = false;
-                this.showLoginButton = false;
-                this.showOptions = true;
-            }
+            this.verifyUserLogin();
             this.getUserData();
         });
         if (this.productsList.length === 0) {
             this.getProducts();
+        }
+    }
+
+    verifyUserLogin() {
+        this.user = this.appService.getUserData('user') || {};
+        if (this.user && this.user.id) {
+            this.showRegisterButton = false;
+            this.showLoginButton = false;
+            this.showOptions = true;
+        } else {
+            this.showRegisterButton = true;
+            this.showLoginButton = true;
+            this.showOptions = false;
         }
     }
 

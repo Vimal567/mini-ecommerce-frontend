@@ -5,11 +5,11 @@ import { AppService } from '../../app.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
     user: User = {};
     productsList: Product[] = [];
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit{
     getCart() {
         this.loaderService.start();
         const payload = {
-            account_id : this.user.id
+            account_id: this.user.id
         };
         this.appService.getCart(payload).subscribe({
             next: (res: any) => {
@@ -79,12 +79,10 @@ export class DashboardComponent implements OnInit{
         this.loaderService.start();
         const payload = {
             account_id: this.user.id,
-            cart_items: [
-                {
-                    product: product,
-                    qty: 1
-                }
-            ]
+            cart_item: {
+                product: product,
+                qty: 1
+            }
         };
         this.appService.addToCart(payload).subscribe({
             next: (res: any) => {

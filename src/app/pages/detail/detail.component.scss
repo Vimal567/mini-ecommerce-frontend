@@ -65,8 +65,7 @@
 
 @media screen and (max-width: 576px) {
     .product-detail-container {
-        display: flex;
+        grid-template-columns: 100%;
         margin-top: 1rem;
-
     }
 }
