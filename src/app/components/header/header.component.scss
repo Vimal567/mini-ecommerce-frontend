@@ -10,9 +10,13 @@
     z-index: 1;
 
     .logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
         i {
             display: none;
+            font-size: 1.7rem;
         }
 
         img {

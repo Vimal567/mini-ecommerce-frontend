@@ -1,0 +1,11 @@
+<div class="carousel-container">
+    <div class="directional-left" *ngIf="current" (click)="onClickLeft()">
+        <i class="bi bi-chevron-compact-left"></i>
+    </div>
+    <div class="product-image">
+        <img [src]="images[current]" alt="product image">
+    </div>
+    <div class="directional-right" *ngIf="current !== images.length - 1" (click)="onClickRightt()">
+        <i class="bi bi-chevron-compact-right"></i>
+    </div>
+</div>

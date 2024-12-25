@@ -28,6 +28,10 @@ export class AppService {
         return this.http.get(this.apiUrl + '/products');
     }
 
+    getProductById(id): Observable<any> {
+        return this.http.get(this.apiUrl + '/products/' + id);
+    }
+
     parseProductsList(products: any) {
         return products.map(product => {
             return {

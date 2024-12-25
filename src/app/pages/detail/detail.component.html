@@ -1,1 +1,8 @@
-<p>detail works!</p>
+<div class="container-wrapper">
+    <div class="product-detail-container">
+        <div class="carousel-section" *ngIf="product && product.id">
+            <app-products-carousel [product]="product"></app-products-carousel>
+        </div>
+        <div class="detail-section"></div>
+    </div>
+</div>

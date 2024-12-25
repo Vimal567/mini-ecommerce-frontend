@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit{
 
     constructor(
         private appService: AppService,
-        private loaderService: NgxUiLoaderService,
+        private loaderService: NgxUiLoaderService
     ) {
 
     }

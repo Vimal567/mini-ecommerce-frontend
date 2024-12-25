@@ -4,7 +4,7 @@
         <div class="cart-value" *ngIf="isLoggedIn"><i class="bi bi-cart4"></i> 0</div>
     </div>
     <div class="product-grid">
-        <div class="product" *ngFor="let item of productsList">
+        <div class="product" routerLink="/detail/{{item.id}}" *ngFor="let item of productsList">
             <img [src]="item.images[0].image" alt="">
             <div class="name">{{ item.name }}</div>
             <div class="ratings">
