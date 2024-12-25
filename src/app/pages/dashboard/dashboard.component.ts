@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, User } from '../../app.model';
+import { Cart, Product, User } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppService } from '../../app.service';
 import { ToastrService } from 'ngx-toastr';
@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit{
 
     user: User = {};
     productsList: Product[] = [];
+    cart: Cart[] = [];
     isLoggedIn: boolean = false;
 
     constructor(
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit{
             this.isLoggedIn = true;
         }
         this.getProducts();
+        this.getCart();
     }
 
     getProducts() {
@@ -41,6 +43,26 @@ export class DashboardComponent implements OnInit{
             next: (res: any) => {
                 if (res) {
                     this.productsList = this.appService.parseProductsList(res.data);
+                }
+            },
+            error: (error) => {
+                this.loaderService.stop();
+            },
+            complete: () => {
+                this.loaderService.stop();
+            }
+        });
+    }
+
+    getCart() {
+        this.loaderService.start();
+        const payload = {
+            account_id : this.user.id
+        };
+        this.appService.getCart(payload).subscribe({
+            next: (res: any) => {
+                if (res) {
+                    this.cart = this.appService.parseCart(res.data);
                 }
             },
             error: (error) => {
@@ -68,6 +90,7 @@ export class DashboardComponent implements OnInit{
             next: (res: any) => {
                 if (res && res.success) {
                     this.toastrService.success("Added to the cart sucessfully!");
+                    this.getCart();
                 }
             },
             error: (error) => {

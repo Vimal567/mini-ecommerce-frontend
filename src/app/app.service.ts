@@ -63,7 +63,7 @@ export class AppService {
         return cartData.map(cart => {
             return {
                 accountId: cart.accountId,
-                cartItems: cart.cartltems ? cart.cartltems.map(item => {
+                cartItems: cart.cartItems ? cart.cartItems.map(item => {
                     return {
                         product: this.parseProductsList([item.product]),
                         quantity: item.qty
