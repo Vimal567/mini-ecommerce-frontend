@@ -59,6 +59,10 @@ export class DetailComponent implements OnInit {
     }
 
     addToCart(product: Product) {
+        if (!this.user || !this.user.id) {
+            this.router.navigate(['login']);
+            return;
+        }
         this.loaderService.start();
         const payload = {
             account_id: this.user.id,
