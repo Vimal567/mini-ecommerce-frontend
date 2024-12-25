@@ -35,3 +35,8 @@ export class CartItems {
     product?: Product;
     quantity?: number;
 }
+
+export class SupportEntry {
+    title?: string;
+    description?: string;
+}

@@ -159,6 +159,10 @@ export class HeaderComponent implements OnInit {
                 this.router.navigate(['settings']);
                 this.closeSidebar();
                 break;
+            case 'SUPPORT':
+                this.router.navigate(['support']);
+                this.closeSidebar();
+                break;
         }
     }
 

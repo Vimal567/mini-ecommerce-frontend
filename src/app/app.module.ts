@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailComponent } from './pages/detail/detail.component';
+import { SupportComponent } from './pages/support/support.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { DetailComponent } from './pages/detail/detail.component';
         CustomValidationDirective,
         SettingsComponent,
         DashboardComponent,
-        DetailComponent
+        DetailComponent,
+        SupportComponent
     ],
     imports: [
         BrowserModule,
