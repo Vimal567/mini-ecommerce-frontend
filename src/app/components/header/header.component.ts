@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
     @ViewChild('sidebar', { static: true }) sidebar: ElementRef;
     @ViewChild('toggleButton', { static: true }) toggleButton: ElementRef;
+    @ViewChild('searchInput') searchInput: ElementRef;
 
     constructor(
         private appService: AppService,
@@ -138,7 +139,9 @@ export class HeaderComponent implements OnInit {
     }
 
     onSelectProduct(product: Product) {
-        console.log(product)
+        this.searchInput.nativeElement.value = null;
+        this.filteredProducts = [];
+        this.router.navigate(['detail/' + product.id]);
     }
 
     navigateTo(page: string) {

@@ -5,7 +5,7 @@
     </div>
 
     <div class="search-bar-container">
-        <input type="text" class="form-control" placeholder="Search.." (input)="onTyping($event)">
+        <input type="text" #searchInput class="form-control" placeholder="Search.." (input)="onTyping($event)">
         <i class="bi bi-search"></i>
         <div class="search-results-container" *ngIf="filteredProducts && filteredProducts.length">
             <div class="product" *ngFor="let product of filteredProducts" (click)="onSelectProduct(product)">
