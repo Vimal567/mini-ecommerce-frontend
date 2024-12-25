@@ -33,11 +33,11 @@ export class AppService {
     }
 
     getCart(payload): Observable<any> {
-        return this.http.get(this.apiUrl + '/order?' + this.buildQueryParams(payload));
+        return this.http.get(this.apiUrl + '/cart?' + this.buildQueryParams(payload));
     }
 
     addToCart(postObj): Observable<any> {
-        return this.http.post(this.apiUrl + '/order', postObj);
+        return this.http.post(this.apiUrl + '/cart', postObj);
     }
 
     parseProductsList(products: any) {
