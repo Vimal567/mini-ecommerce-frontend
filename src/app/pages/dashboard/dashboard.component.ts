@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product, User } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppService } from '../../app.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit{
 
     constructor(
         private appService: AppService,
-        private loaderService: NgxUiLoaderService
+        private loaderService: NgxUiLoaderService,
+        private toastrService: ToastrService
     ) {
 
     }
@@ -39,6 +41,33 @@ export class DashboardComponent implements OnInit{
             next: (res: any) => {
                 if (res) {
                     this.productsList = this.appService.parseProductsList(res.data);
+                }
+            },
+            error: (error) => {
+                this.loaderService.stop();
+            },
+            complete: () => {
+                this.loaderService.stop();
+            }
+        });
+    }
+
+    addToCart(product: Product, event: Event): void {
+        event.stopPropagation();
+        this.loaderService.start();
+        const payload = {
+            account_id: this.user.id,
+            cart_items: [
+                {
+                    product: product,
+                    qty: 1
+                }
+            ]
+        };
+        this.appService.addToCart(payload).subscribe({
+            next: (res: any) => {
+                if (res && res.success) {
+                    this.toastrService.success("Added to the cart sucessfully!");
                 }
             },
             error: (error) => {

@@ -3,4 +3,70 @@
     height: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
+
+    .product-highlights-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .heading {
+            width: 100%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: xx-large;
+            padding: 5%;
+        }
+
+        .stock {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: medium;
+            padding: 0% 5%;
+            margin-bottom: 2rem;
+        }
+
+        .purchase-buttons {
+            display: grid;
+            grid-template-columns: 49% 49%;
+            column-gap: 2%;
+            padding: 1% 5%;
+
+            .cart {
+                padding: 3% 8%;
+                background-color: #ffd814;
+                border: none;
+
+                &:hover {
+                    background-color: #dab80d;
+                }
+            }
+
+            .buy {
+                padding: 3% 8%;
+                background-color: #ffa41c;
+                border: none;
+
+                &:hover {
+                    background-color: #a76b11;
+                }
+            }
+        }
+    }
+
+    .details-section {
+        padding: 0% 5%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: x-large;
+        line-height: 4rem;
+
+        .product-points {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .product-detail-container {
+        display: flex;
+        margin-top: 1rem;
+
+    }
 }

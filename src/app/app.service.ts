@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -32,13 +32,21 @@ export class AppService {
         return this.http.get(this.apiUrl + '/products/' + id);
     }
 
+    getCart(payload): Observable<any> {
+        return this.http.get(this.apiUrl + '/order?' + this.buildQueryParams(payload));
+    }
+
+    addToCart(postObj): Observable<any> {
+        return this.http.post(this.apiUrl + '/order', postObj);
+    }
+
     parseProductsList(products: any) {
         return products.map(product => {
             return {
                 id: product._id,
                 name: product.name,
                 price: product.price,
-                description: product.description,
+                description: product.description ? product.description.map(item => item) : [],
                 ratings: product.ratings,
                 images: product.images ? product.images.map(image => ({
                     id: image._id,
@@ -50,6 +58,23 @@ export class AppService {
             };
         });
     }
+
+    parseCart(cartData: any) {
+        return cartData.map(cart => {
+            return {
+                accountId: cart.accountId,
+                cartItems: cart.cartltems ? cart.cartltems.map(item => {
+                    return {
+                        product: this.parseProductsList([item.product]),
+                        quantity: item.qty
+                    };
+                }) : [],
+                amount: parseFloat(cart.amount),
+                status: cart.status
+            };
+        });
+    }
+
 
     setUserData(data: any) {
         window.localStorage.setItem('user', JSON.stringify({
@@ -66,6 +91,21 @@ export class AppService {
 
     logout() {
         return window.localStorage.clear();
+    }
+
+/**
+ * Converts an object into HttpParams (query parameters).
+ * @param paramsObj - The object to be converted into query params.
+ * @returns {HttpParams} - The HttpParams object.
+ */
+    buildQueryParams(paramsObj: any): HttpParams {
+        let params = new HttpParams();
+        for (const key in paramsObj) {
+            if (paramsObj.hasOwnProperty(key)) {
+                params = params.append(key, paramsObj[key]);
+            }
+        }
+        return params;
     }
 
 }

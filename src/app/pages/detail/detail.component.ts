@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User, Product } from '../../app.model';
+import { User, Product, Cart } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppService } from '../../app.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-detail',
@@ -14,11 +15,13 @@ export class DetailComponent implements OnInit {
     id: string;
     user: User = {};
     product: Product = {};
+    cart: Cart[] = [];
     isLoggedIn: boolean = false;
 
     constructor(
         private appService: AppService,
         private loaderService: NgxUiLoaderService,
+        private toastrService: ToastrService,
         private router: Router,
         private route: ActivatedRoute
     ) {
@@ -44,6 +47,32 @@ export class DetailComponent implements OnInit {
             next: (res: any) => {
                 if (res) {
                     this.product = this.appService.parseProductsList(res.data)[0];
+                }
+            },
+            error: (error) => {
+                this.loaderService.stop();
+            },
+            complete: () => {
+                this.loaderService.stop();
+            }
+        });
+    }
+
+    addToCart(product: Product) {
+        this.loaderService.start();
+        const payload = {
+            account_id: this.user.id,
+            cart_items: [
+                {
+                    product: product,
+                    qty: 1
+                }
+            ]
+        };
+        this.appService.addToCart(payload).subscribe({
+            next: (res: any) => {
+                if (res && res.success) {
+                    this.toastrService.success("Added to the cart sucessfully!");
                 }
             },
             error: (error) => {

@@ -11,7 +11,9 @@
                 <app-rating [rating]="item.ratings"></app-rating>
             </div>
             <div class="price">₹ {{ item.price | number:'1.0-0' }}</div>
-            <div class="cart-button" *ngIf="isLoggedIn"><i class="bi bi-cart-plus"></i></div>
+            <div class="cart-button" *ngIf="isLoggedIn" (click)="addToCart(item, $event)">
+                <i class="bi bi-cart-plus"></i>
+            </div>
         </div>
     </div>
 </div>

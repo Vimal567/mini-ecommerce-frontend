@@ -16,10 +16,22 @@ export class Product {
     id?: string;
     name?: string;
     price?: string;
-    description?: string;
+    description?: string[];
     ratings?: string;
     images?: Image[];
     category?: string;
     seller?: string;
     stock?: number;
+}
+
+export class Cart {
+    accountId?: string;
+    cartItems?: CartItems;
+    amount?: number;
+    status?: string;
+}
+
+export class CartItems {
+    product?: Product;
+    quantity?: number;
 }
