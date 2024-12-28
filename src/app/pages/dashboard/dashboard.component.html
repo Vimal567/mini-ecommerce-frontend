@@ -3,7 +3,7 @@
         <div class="heading">Dashboard</div>
         <div class="cart-value" *ngIf="isLoggedIn" routerLink="/cart">
             <i class="bi bi-cart4"></i>
-            {{ cart && cart[0] && cart[0].cartItems ? cart[0].cartItems.length : 0 }}
+            {{ cart  && cart.cartItems ? cart.cartItems.length : 0 }}
         </div>
     </div>
     <div class="product-grid">

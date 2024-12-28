@@ -14,12 +14,15 @@
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: xx-large;
             color: rgb(38, 88, 100);
+            text-shadow: 5px 5px 14px rgb(108, 109, 109);
         }
 
         .cart-value {
             padding: 1% 2%;
             border-radius: 5px;
             background-color: rgb(66, 173, 192);
+            text-shadow: 14px 5px 14px rgb(108, 109, 109);
+            box-shadow: 10px 10px 20px #cbced1, -10px -10px 20px white;
             cursor: pointer;
 
             &:hover {
@@ -43,6 +46,7 @@
         height: 35vh;
         border: 2px solid rgb(231, 231, 231);
         border-radius: 20px;
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
         overflow: hidden;
         cursor: pointer;
 

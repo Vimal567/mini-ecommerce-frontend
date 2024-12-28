@@ -26,12 +26,12 @@ export class Product {
 
 export class Cart {
     accountId?: string;
-    cartItems?: CartItems;
+    cartItems?: CartItem[];
     amount?: number;
     status?: string;
 }
 
-export class CartItems {
+export class CartItem {
     product?: Product;
     quantity?: number;
 }

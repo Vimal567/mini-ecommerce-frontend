@@ -43,7 +43,7 @@ export class AppService {
     parseProductsList(products: any) {
         return products.map(product => {
             return {
-                id: product._id,
+                id: product._id ? product._id : product.id,
                 name: product.name,
                 price: product.price,
                 description: product.description ? product.description.map(item => item) : [],
@@ -60,21 +60,17 @@ export class AppService {
     }
 
     parseCart(cartData: any) {
-        return cartData.map(cart => {
-            return {
-                accountId: cart.accountId,
-                cartItems: cart.cartItems ? cart.cartItems.map(item => {
-                    return {
-                        product: this.parseProductsList([item.product]),
-                        quantity: item.qty
-                    };
-                }) : [],
-                amount: parseFloat(cart.amount),
-                status: cart.status
-            };
-        });
+        return {
+            accountId: cartData.accountId,
+            cartItems: cartData.cartItems ? cartData.cartItems.map(item => {
+                return {
+                    product: this.parseProductsList([item.product])[0],
+                    quantity: item.qty
+                };
+            }) : [],
+            amount: parseFloat(cartData.amount)
+        };
     }
-
 
     setUserData(data: any) {
         window.localStorage.setItem('user', JSON.stringify({

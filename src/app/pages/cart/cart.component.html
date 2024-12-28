@@ -1,1 +1,69 @@
-<p>cart works!</p>
+<div class="container-wrapper">
+    <div class="heading">Cart</div>
+    <div class="cart-section" *ngIf="cart && cart.cartItems && cart.cartItems.length">
+        <div class="cart-container">
+            <div class="product" *ngFor="let cart of cart.cartItems">
+                <div class="wrapper">
+                    <img [src]="cart.product.images[0].image" alt="product" routerLink="/detail/{{cart.product.id}}">
+                    <div class="quantity-container">
+                        <div class="quantity-container">
+                            <div (click)="updateCartItem('REMOVE', cart)">
+                                <span *ngIf="cart.quantity === 1"><i class="bi bi-trash"></i></span>
+                                <span *ngIf="cart.quantity > 1"><i class="bi bi-file-minus"></i></span>
+                            </div>
+                            {{ cart.quantity }}
+                            <div (click)="updateCartItem('ADD', cart)">
+                                <span><i class="bi bi-file-plus"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="name">{{ cart.product.name }}</div>
+                    <div class="price">₹ {{ cart.product.price | number:'1.0-0'}} /-</div>
+                    <div class="price">Total Price: ₹ {{ cart.product.price * cart.quantity | number:'1.0-0'}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="calculation-section">
+            <div class="calculation">
+                <div class="heading">Order Details</div>
+                <div class="calculation-container">
+                    <div class="order-details">
+                        <div class="label">Items:</div>
+                        <div class="value">
+                            ₹{{ getTotalPrice() | number:'1.0-0' }}
+                        </div>                                                     
+                    </div>
+                    <div class="order-details">
+                        <div class="label">Delivery:</div>
+                        <div class="value">
+                            ₹120
+                        </div>                                                     
+                    </div>
+                    <div class="order-details">
+                        <div class="label">Delivery:</div>
+                        <div class="value">
+                            ₹ {{ getTotalPrice() + 120 | number:'1.0-0' }}
+                        </div>                                                     
+                    </div>
+                    <div class="order-details">
+                        <div class="label">Free Delivery(Limited Offer):</div>
+                        <div class="value">
+                            -₹120
+                        </div>                                                     
+                    </div>
+                    <div class="order-details" style="font-weight: bold;">
+                        <div class="label">Order Total:</div>
+                        <div class="value">
+                            ₹{{ getTotalPrice() | number:'1.0-0' }}
+                        </div>                                                     
+                    </div>
+                </div>
+                <div class="checkout-container">
+                    <button class="btn btn-success">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

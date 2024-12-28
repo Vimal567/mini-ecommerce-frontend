@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
     id: string;
     user: User = {};
     product: Product = {};
-    cart: Cart[] = [];
+    cart: Cart = {};
     isLoggedIn: boolean = false;
 
     constructor(
@@ -74,7 +74,7 @@ export class DetailComponent implements OnInit {
         this.appService.addToCart(payload).subscribe({
             next: (res: any) => {
                 if (res && res.success) {
-                    this.toastrService.success("Added to the cart sucessfully!");
+                    this.toastrService.success("Added to the cart successfully!");
                 }
             },
             error: (error) => {
