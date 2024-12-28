@@ -1,4 +1,10 @@
 <div class="container-wrapper">
+    <div class="back-to-dashboard" routerLink="">
+        <span>
+            <i class="bi bi-chevron-left"></i>
+            Back to Dashboard
+        </span>
+    </div>
     <div class="heading">Cart</div>
     <div class="cart-section" *ngIf="cart && cart.cartItems && cart.cartItems.length">
         <div class="cart-container">
