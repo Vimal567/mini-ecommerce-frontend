@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
         };
         this.appService.getCart(payload).subscribe({
             next: (res: any) => {
-                if (res) {
+                if (res && res.success) {
                     this.cart = this.appService.parseCart(res.data);
                 }
             },

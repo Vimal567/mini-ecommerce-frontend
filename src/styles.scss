@@ -78,6 +78,13 @@
                 }
             }
 
+            .link {
+                text-decoration: underline;
+                text-align: right;
+                color: rgb(83, 128, 0);
+                cursor: pointer;
+            }
+
             button {
                 width: 100%;
                 color: white;

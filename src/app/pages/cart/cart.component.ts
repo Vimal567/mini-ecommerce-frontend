@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { User, Cart, CartItem } from '../../app.model';
 import { AppService } from '../../app.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-cart',
@@ -16,8 +15,7 @@ export class CartComponent {
 
     constructor(
         private appService: AppService,
-        private loaderService: NgxUiLoaderService,
-        private toastrService: ToastrService
+        private loaderService: NgxUiLoaderService
     ) {
 
     }
@@ -38,7 +36,7 @@ export class CartComponent {
         };
         this.appService.getCart(payload).subscribe({
             next: (res: any) => {
-                if (res) {
+                if (res && res.success) {
                     this.cart = this.appService.parseCart(res.data);
                 }
             },

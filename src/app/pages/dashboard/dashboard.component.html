@@ -3,10 +3,10 @@
         <div class="heading">Dashboard</div>
         <div class="cart-value" *ngIf="isLoggedIn" routerLink="/cart">
             <i class="bi bi-cart4"></i>
-            {{ cart  && cart.cartItems ? cart.cartItems.length : 0 }}
+            {{ cart && cart.cartItems ? cart.cartItems.length : 0 }}
         </div>
     </div>
-    <div class="product-grid">
+    <div class="product-grid" *ngIf="productsList && productsList.length">
         <div class="product" routerLink="/detail/{{item.id}}" *ngFor="let item of productsList">
             <img [src]="item.images[0].image" alt="">
             <div class="name">{{ item.name }}</div>
@@ -18,5 +18,9 @@
                 <i class="bi bi-cart-plus"></i>
             </div>
         </div>
+    </div>
+
+    <div class="no-products-container" *ngIf="!productsList || !productsList.length">
+        No products available right now <i class="bi bi-ban"></i>
     </div>
 </div>

@@ -102,4 +102,15 @@
             }
         }
     }
+    
+    .no-products-container {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 1.5rem;
+        color: rgb(99, 82, 196);
+    }
 }
