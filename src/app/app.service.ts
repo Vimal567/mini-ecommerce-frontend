@@ -32,12 +32,16 @@ export class AppService {
         return this.http.get(this.apiUrl + '/products/' + id);
     }
 
-    getCart(payload): Observable<any> {
-        return this.http.get(this.apiUrl + '/cart?' + this.buildQueryParams(payload));
+    getCart(filter): Observable<any> {
+        return this.http.get(this.apiUrl + '/cart?' + this.buildQueryParams(filter));
     }
 
     addToCart(postObj): Observable<any> {
         return this.http.post(this.apiUrl + '/cart', postObj);
+    }
+
+    getOrders(filter): Observable<any> {
+        return this.http.get(this.apiUrl + '/order?' + this.buildQueryParams(filter));
     }
 
     parseProductsList(products: any) {

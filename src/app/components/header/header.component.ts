@@ -154,6 +154,10 @@ export class HeaderComponent implements OnInit {
                 this.router.navigate(['register']);
                 this.closeSidebar();
                 break;
+            case 'ORDERS':
+                this.router.navigate(['orders']);
+                this.closeSidebar();
+                break;
             case 'SETTINGS':
                 this.router.navigate(['settings']);
                 this.closeSidebar();

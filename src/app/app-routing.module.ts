@@ -7,6 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { SupportComponent } from './pages/support/support.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
         path: 'cart',
         component: CartComponent
+    },
+    {
+        path: 'orders',
+        component: OrdersComponent
     },
     {
         path: 'settings',

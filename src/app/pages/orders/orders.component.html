@@ -1,0 +1,24 @@
+<div class="container-wrapper">
+    <div class="back-to-dashboard" routerLink="">
+        <span>
+            <i class="bi bi-chevron-left"></i>
+            Back to Dashboard
+        </span>
+    </div>
+    <div class="order-section" *ngIf="orders && orders.orderItems && orders.orderItems.length">
+        <div class="order-container" *ngFor="let order of orders.orderItems">
+            <img [src]="order.product.images[0].image" alt="product">
+            <div>
+                <div class="name">{{ order.product.name }}</div>
+                <div class="price">Price: ₹ {{ order.product.price | number:'1.0-0'}} /-</div>
+                <div class="price">Quantity: {{ order.quantity}}</div>
+                <div class="price">Total Price: ₹ {{ order.product.price * order.quantity | number:'1.0-0'}}</div>
+                <div class="date-time">Ordered on {{ order.date }} at {{ order.time }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="no-orders" *ngIf="!orders || !orders.orderItems || !orders.orderItems.length">
+        No items ordered yet
+    </div>
+</div>

@@ -45,11 +45,16 @@ export class DetailComponent implements OnInit {
         this.loaderService.start();
         this.appService.getProductById(this.id).subscribe({
             next: (res: any) => {
-                if (res) {
+                if (res && res.success) {
                     this.product = this.appService.parseProductsList(res.data)[0];
+                } else {
+                    this.toastrService.error("Unable to fetch the product");
+                    this.router.navigate(["dashboard"]);
                 }
             },
             error: (error) => {
+                this.toastrService.error("Unable to fetch the product");
+                this.router.navigate(['']);
                 this.loaderService.stop();
             },
             complete: () => {

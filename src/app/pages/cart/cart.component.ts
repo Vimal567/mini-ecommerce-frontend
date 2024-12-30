@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { User, Cart, CartItem } from '../../app.model';
+import { User, Cart, ProductItem } from '../../app.model';
 import { AppService } from '../../app.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class CartComponent {
         });
     }
 
-    updateCartItem(action: string, cartItem: CartItem) {
+    updateCartItem(action: string, cartItem: ProductItem) {
         this.loaderService.start();
         const payload = {
             account_id: this.user.id,

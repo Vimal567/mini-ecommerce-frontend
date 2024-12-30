@@ -26,14 +26,21 @@ export class Product {
 
 export class Cart {
     accountId?: string;
-    cartItems?: CartItem[];
+    cartItems?: ProductItem[];
     amount?: number;
-    status?: string;
 }
 
-export class CartItem {
+export class ProductItem {
     product?: Product;
     quantity?: number;
+    date?: string;
+    time?: string;
+}
+
+export class Orders {
+    accountId?: string;
+    orderItems?: ProductItem[];
+    createdAt?: string;
 }
 
 export class SupportEntry {
