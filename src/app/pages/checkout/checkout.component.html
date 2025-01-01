@@ -1,0 +1,33 @@
+<div class="container-wrapper">
+    <div class="heading">Checkout</div>
+    <div class="checkout-section">
+        <form #checkoutForm="ngForm" (ngSubmit)="placeOrder(checkoutForm)">
+            <div class="form-group">
+                <label for="name">Name*</label>
+                <input class="form-control" [(ngModel)]="orderEntry.name" name="name" id="name" type="text"
+                    placeholder="Enter name" appFormValidator required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control" [(ngModel)]="orderEntry.email"
+                    placeholder="Enter your Email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Contact Number*</label>
+                <input type="tel" class="form-control" [(ngModel)]="orderEntry.phone"
+                    placeholder="Enter your Contact number" name="phone" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address*</label>
+                <textarea class="form-control" [(ngModel)]="orderEntry.address" rows="5"
+                    placeholder="Enter your address" name="address" id="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" [disabled]="!checkoutForm.valid">Checkout</button>
+                <button class="btn btn-secondary" (click)="navigateBack(checkoutForm)">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

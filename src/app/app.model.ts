@@ -47,3 +47,10 @@ export class SupportEntry {
     title?: string;
     description?: string;
 }
+
+export class OrderEntry {
+    name?: string;
+    email?: string;
+    phone?: number;
+    address?: string;
+}

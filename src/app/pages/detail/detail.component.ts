@@ -49,7 +49,7 @@ export class DetailComponent implements OnInit {
                     this.product = this.appService.parseProductsList(res.data)[0];
                 } else {
                     this.toastrService.error("Unable to fetch the product");
-                    this.router.navigate(["dashboard"]);
+                    this.router.navigate([""]);
                 }
             },
             error: (error) => {

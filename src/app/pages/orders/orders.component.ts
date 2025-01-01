@@ -50,7 +50,6 @@ export class OrdersComponent implements OnInit {
                             } as ProductItem;
                         }) : []
                     }
-                    console.log(this.orders)
                 }
             },
             error: (error) => {

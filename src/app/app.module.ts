@@ -18,6 +18,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { SupportComponent } from './pages/support/support.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { OrdersComponent } from './pages/orders/orders.component';
         DetailComponent,
         SupportComponent,
         CartComponent,
-        OrdersComponent
+        OrdersComponent,
+        CheckoutComponent
     ],
     imports: [
         BrowserModule,

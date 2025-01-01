@@ -18,7 +18,7 @@
                 <button type="button" class="btn btn-success cart" (click)="addToCart(product)">
                     Add to Cart <i class="bi bi-cart4"></i>
                 </button>
-                <button type="button" class="btn btn-success buy">
+                <button type="button" class="btn btn-success buy" routerLink="/checkout/{{product.id}}">
                     Buy Now
                 </button>
             </div>

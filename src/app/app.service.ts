@@ -43,6 +43,10 @@ export class AppService {
     getOrders(filter): Observable<any> {
         return this.http.get(this.apiUrl + '/order?' + this.buildQueryParams(filter));
     }
+    
+    placeOrder(postObj): Observable<any> {
+        return this.http.post(this.apiUrl + '/order', postObj);
+    }
 
     parseProductsList(products: any) {
         return products.map(product => {
