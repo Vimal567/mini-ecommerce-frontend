@@ -16,6 +16,7 @@
 
     <div class="links-container">
         <ng-container *ngIf="showOptions">
+            <span (click)="navigateTo('CART')">Cart</span>
             <span (click)="navigateTo('ORDERS')">Orders</span>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
@@ -45,6 +46,7 @@
     <div class="menu-container">
         <div class="divider"></div>
         <ng-container *ngIf="showOptions">
+            <div class="menu-item" (click)="navigateTo('CART')">Cart</div>
             <div class="menu-item" (click)="navigateTo('ORDERS')">Orders</div>
             <div class="menu-item" (click)="navigateTo('SETTINGS')">Settings</div>
             <div class="menu-item" (click)="navigateTo('SUPPORT')">Support</div>
