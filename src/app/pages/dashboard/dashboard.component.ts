@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
     productsList: Product[] = [];
     cart: Cart = {};
     isLoggedIn: boolean = false;
+    loading: boolean = true;
 
     constructor(
         private appService: AppService,
@@ -38,6 +39,7 @@ export class DashboardComponent implements OnInit {
     }
 
     getProducts() {
+        this.loading = true;
         this.loaderService.start();
         this.appService.getProducts().subscribe({
             next: (res: any) => {
@@ -46,9 +48,11 @@ export class DashboardComponent implements OnInit {
                 }
             },
             error: (error) => {
+                this.loading = false;
                 this.loaderService.stop();
             },
             complete: () => {
+                this.loading = false;
                 this.loaderService.stop();
             }
         });

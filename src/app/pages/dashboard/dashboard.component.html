@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="no-products-container" *ngIf="!productsList || !productsList.length">
-        No products available right now <i class="bi bi-ban"></i>
+    <div class="no-products-container" *ngIf="!loading && (!productsList || !productsList.length)">
+      <span>No products available right now <i class="bi bi-cart"></i></span>Please refresh and try again...
     </div>
 </div>
