@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
 
     user: User = {};
     orders: Orders = {};
+    loading: boolean = true;
 
     constructor(
         private appService: AppService,
@@ -33,6 +34,7 @@ export class OrdersComponent implements OnInit {
     }
 
     getOrders() {
+        this.loading = true;
         this.loaderService.start();
         const filter = {account_id: this.user.id};
         this.appService.getOrders(filter).subscribe({
@@ -53,9 +55,11 @@ export class OrdersComponent implements OnInit {
                 }
             },
             error: (error) => {
+                this.loading = false;
                 this.loaderService.stop();
             },
             complete: () => {
+                this.loading = false;
                 this.loaderService.stop();
             }
         });

@@ -12,6 +12,7 @@ export class CartComponent {
 
     user: User = {};
     cart: Cart = {};
+    loading: boolean = true;
 
     constructor(
         private appService: AppService,
@@ -30,6 +31,7 @@ export class CartComponent {
     }
 
     getCart() {
+        this.loading = true;
         this.loaderService.start();
         const payload = {
             account_id: this.user.id
@@ -41,9 +43,11 @@ export class CartComponent {
                 }
             },
             error: (error) => {
+                this.loading = false;
                 this.loaderService.stop();
             },
             complete: () => {
+                this.loading = false;
                 this.loaderService.stop();
             }
         });

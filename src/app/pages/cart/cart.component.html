@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div class="empty-cart-container" *ngIf="!cart || !cart.cartItems || !cart.cartItems.length">
+    <div class="empty-cart-container" *ngIf="!loading && (!cart || !cart.cartItems || !cart.cartItems.length)">
         Cart is empty <i class="bi bi-cart"></i>
     </div>
 </div>

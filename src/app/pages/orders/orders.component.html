@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="no-orders" *ngIf="!orders || !orders.orderItems || !orders.orderItems.length">
+    <div class="no-orders" *ngIf="!loading && (!orders || !orders.orderItems || !orders.orderItems.length)">
         No items ordered yet
     </div>
 </div>
