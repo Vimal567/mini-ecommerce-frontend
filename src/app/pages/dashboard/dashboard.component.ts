@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   cart: Cart = {};
   isLoggedIn: boolean = false;
   loading: boolean = true;
+  fetchErrorMessage: string = "No products available right now";
 
   constructor(
     private appService: AppService,
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit {
       },
       error: (error) => {
         this.loading = false;
+        this.fetchErrorMessage = "Oops something went wrong";
         this.loaderService.stop();
       },
       complete: () => {

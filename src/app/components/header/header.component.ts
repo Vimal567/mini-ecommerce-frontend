@@ -2,8 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { AppService } from '../../app.service';
 import { Product, User } from '../../app.model';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
