@@ -95,8 +95,8 @@ export class DashboardComponent implements OnInit {
     this.appService.addToCart(payload).subscribe({
       next: (res: any) => {
         if (res && res.success) {
+          this.cart = this.appService.parseCart(res.data);
           this.toastrService.success("Added to the cart successfully!");
-          this.getCart();
         }
       },
       error: (error) => {

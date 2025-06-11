@@ -60,7 +60,6 @@ export class CustomValidationDirective {
             if (control.errors['email']) {
                 errorMessages.push('Invalid email address.');
             }
-            // Add more error cases as necessary
         }
         return errorMessages;
     }
